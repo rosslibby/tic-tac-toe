@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
@@ -226,4 +225,9 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.main h1 {
+  font-weight: 200;
+  margin-bottom: 2.5rem;
 }

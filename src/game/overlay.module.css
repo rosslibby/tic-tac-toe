@@ -1,0 +1,24 @@
+.overlay {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background-color: #dae2ffe8;
+  display: grid;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.overlay button {
+  background-color: #00ff9d;
+  border: none;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 48px 8px #00000021;
+  color: #1d8d61;
+  cursor: pointer;
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  text-transform: uppercase;
+}
