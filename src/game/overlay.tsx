@@ -1,4 +1,4 @@
-import { useGame } from './hooks'
+import { useGame } from '@/app/hooks'
 import styles from './overlay.module.css'
 
 export const Overlay = () => {
