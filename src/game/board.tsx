@@ -3,14 +3,15 @@ import { useContext } from 'react'
 import styles from './board.module.css'
 import { gameCtx } from '.'
 import { Overlay } from './overlay'
-import { System, User } from './piece'
 import { useGame } from '@/app/hooks'
 import { PLAYER } from './types'
+import User from '@/components/pieces/user'
+import System from '@/components/pieces/system'
 
 export const GameBoard = () => {
-  const { layout, over, running, who } = useContext(gameCtx)
+  const { layout, loading, over, running, who } = useContext(gameCtx)
   const { move } = useGame()
-  const classname = running ? styles.board : `${styles.board} ${styles.off}`
+  const classname = (running && who === PLAYER.user && !loading) ? styles.board : `${styles.board} ${styles.off}`
 
   return (
     <div className={classname}>

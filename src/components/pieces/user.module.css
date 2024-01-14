@@ -1,0 +1,28 @@
+.svg {
+  transform: rotate(90deg) scale(0.7);
+  width: 100%;
+  
+  .left {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash-left 1.5s linear forwards;
+  }
+  
+  .right {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash-right 1.5s linear 1s forwards;
+  }
+}
+
+@keyframes dash-left {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash-right {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

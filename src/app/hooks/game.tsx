@@ -16,6 +16,7 @@ export const useGame = () => {
     who,
     _: {
       setLayout,
+      setLoading,
       setRunning,
       setMoves,
       setMessage,
@@ -28,7 +29,7 @@ export const useGame = () => {
 
   useEffect(() => {
     if (who === PLAYER.system) {
-      setTimeout(() => move(smartMove()), 1500)
+      setTimeout(() => move(smartMove()), 3000)
     }
   }, [layout, who])
 
@@ -97,7 +98,9 @@ export const useGame = () => {
       )
 
       if (gameOver) {
-        if (didWin) endGame(who)
+        if (didWin) {
+          setTimeout(() => endGame(who), 1500)
+        }
         else endGame()
 
         return
@@ -107,9 +110,13 @@ export const useGame = () => {
   }
 
   function switchWho() {
+    setLoading(true)
     const next = who === PLAYER.user ? PLAYER.system : PLAYER.user
     setWho(next)
-    setMessage(next === PLAYER.user ? 'Your move' : 'Their move')
+    setTimeout(() => {
+      setMessage(next === PLAYER.user ? 'Your move' : 'Their move')
+      setLoading(false)
+    }, 1500)
   }
 
   return {

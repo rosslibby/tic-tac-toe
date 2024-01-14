@@ -1,8 +1,7 @@
 .board {
-  background-color: #d3d3d3;
+  background-color: transparent;
   border-radius: .375rem;
   display: grid;
-  gap: 1px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   height: 30rem;
@@ -13,7 +12,8 @@
 
 .cell {
   align-items: center;
-  background-color: #ffffff;
+  background-color: #000000;
+  border: 1px solid transparent;
   color: #000000;
   display: grid;
   height: 100%;
@@ -22,12 +22,23 @@
   width: 100%;
 }
 
+.cell:nth-child(-n + 6) {
+  border-bottom: 1px solid #007dff;
+}
+
+.cell:nth-child(2),
+.cell:nth-child(5),
+.cell:nth-child(8) {
+  border-left: 1px solid #007dff;
+  border-right: 1px solid #007dff;
+}
+
 .cell:hover {
-  background-color: #e4efff;
+  background-color: #0062ff2e;
   cursor: pointer;
 }
 
 .board.off .cell:hover {
-  background-color: #ffffff;
+  background-color: transparent;
   cursor: default;
 }

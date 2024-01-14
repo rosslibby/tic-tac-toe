@@ -1,0 +1,16 @@
+.svg {
+  transform: rotate(-120deg) scale(0.7);
+  width: 100%;
+  
+  .path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash 1.5s linear forwards;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

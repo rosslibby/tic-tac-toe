@@ -3,6 +3,7 @@ import { ReactNode, createContext, useContext, useState } from 'react'
 import { Game, Move, PLAYER } from './types'
 
 export const gameCtx = createContext<Game>({
+  loading: false,
   layout: [null, null, null, null, null, null, null, null, null],
   moves: [],
   userMoves: [],
@@ -17,6 +18,7 @@ export default function GameProvider({ children }: {
   children: ReactNode
 }) {
   const ctx = useContext(gameCtx)
+  const [loading, setLoading] = useState<boolean>(false)
   const [layout, setLayout] = useState<(string | null)[]>(ctx.layout)
   const [who, setWho] = useState<PLAYER>(ctx.who)
   const [over, setOver] = useState<boolean>(false)
@@ -28,6 +30,7 @@ export default function GameProvider({ children }: {
 
   return (
     <gameCtx.Provider value={{
+      loading,
       layout,
       moves,
       userMoves,
@@ -38,6 +41,7 @@ export default function GameProvider({ children }: {
       message,
       _: {
         setLayout,
+        setLoading,
         setMessage,
         setMoves,
         setUserMoves,
