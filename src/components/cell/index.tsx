@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import styles from './cell.module.css'
-import { gameCtx } from '..'
-import { PLAYER } from '../types'
 import User from '@/components/pieces/user'
 import System from '@/components/pieces/system'
 import { classNames } from '@/app/utils'
+import { gameCtx } from '@/game'
+import { PLAYER } from '@/game/types'
 
 export default function Cell({ cell, index, move }: {
   cell: string | null

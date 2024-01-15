@@ -24,7 +24,6 @@ export function useMove() {
     const gameOver = didWin || allMoves.length === layout.length - 1
 
     if (gameOver) {
-      console.log('DId win?', didWin, who)
       if (didWin) {
         setTimeout(() => endGame(who), 1500)
       }

@@ -1,8 +1,8 @@
 'use client'
 import styles from './page.module.css'
-import { GameBoard } from '@/game/board'
 import { useContext } from 'react'
 import { gameCtx } from '@/game'
+import { GameBoard } from '@/components/board'
 
 export default function Home() {
   const { message } = useContext(gameCtx)
