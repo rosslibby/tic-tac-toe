@@ -6,7 +6,13 @@ export const checkForWin = (moves: number[]): boolean => {
   for (const combo of WINNING_COMBOS) {
     result = combo.every((index: number) => moves.includes(index))
 
-    if (result) break
+    if (result) {
+      console.log('Winning combo is', combo)
+      const cells = Array.from(document.querySelectorAll('#board > div')).filter((_, index: number) => combo.includes(index))
+      console.log(cells)
+
+      break
+    }
   }
 
   return result

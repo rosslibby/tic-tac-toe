@@ -17,7 +17,7 @@ export const GameBoard = () => {
   ])
 
   return (
-    <div className={classname}>
+    <div className={classname} id="board">
       {layout.map((cell: (string | null), index: number) => (
         <Cell cell={cell} index={index} key={index} move={move} />
       ))}
