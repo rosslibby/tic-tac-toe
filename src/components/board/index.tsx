@@ -4,15 +4,17 @@ import styles from './board.module.css'
 import { useGame } from '@/app/hooks'
 import { gameCtx } from '@/game'
 import { PLAYER } from '@/game/types'
-import { Overlay } from '../overlay'
 import Cell from '../cell'
+import { classNames } from '@/app/utils'
 
 export const GameBoard = () => {
   const { layout, loading, over, running, who } = useContext(gameCtx)
   const { move } = useGame()
-  const classname = (running && who === PLAYER.user && !loading)
-    ? styles.board
-    : `${styles.board} ${styles.off}`
+  const classname = classNames([
+    styles.board,
+    [styles.off, running && who === PLAYER.user && !loading],
+    [styles.over, over],
+  ])
 
   return (
     <div className={classname}>

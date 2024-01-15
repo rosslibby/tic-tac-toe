@@ -13,6 +13,24 @@
   --border-color: #ff79c6;
 }
 
+.over {
+  --border-color: #212536;
+}
+
+.over::before {
+  animation: overlay 5s linear 0 1;
+  background-color: #13141f80;
+  background-image: radial-gradient(#6273a42e 1px, transparent 0);
+  background-size: 16px 16px;
+  border-radius: 2.75rem;
+  content: '';
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  width: 100%;
+  z-index: 10;
+}
+
 @media screen and (max-width: 64rem) {
   .board {
     width: 80%;
@@ -29,5 +47,15 @@
   .board {
     height: 80vw;
     width: 80vw;
+  }
+}
+
+@keyframes overlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
