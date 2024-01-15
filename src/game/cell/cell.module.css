@@ -1,17 +1,3 @@
-.board {
-  background-color: transparent;
-  border-radius: .375rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  height: 30rem;
-  overflow: hidden;
-  position: relative;
-  width: 30rem;
-
-  --border-color: #ff79c6;
-}
-
 .cell {
   align-items: center;
   border: 1px solid transparent;
@@ -34,17 +20,16 @@
 }
 
 .cell:hover,
-.cellHover {
+.hover {
   background-color: #181928;
   cursor: pointer;
 }
 
 .cell:active,
-.cellActive {
+.active {
   background-color: #ff79c638;
 }
 
-.board.off .cell:hover {
-  background-color: transparent;
-  cursor: default;
+.disabled {
+  pointer-events: none;
 }

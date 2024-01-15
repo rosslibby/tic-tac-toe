@@ -15,15 +15,17 @@ export const useGame = () => {
     userMoves,
     who,
     _: {
+      setConsidered,
       setLayout,
       setLoading,
       setRunning,
       setMoves,
       setMessage,
       setOver,
-      setWho,
-      setUserMoves,
+      setSelection,
       setSystemMoves,
+      setUserMoves,
+      setWho,
     }
   } = useContext(gameCtx)
 
@@ -39,6 +41,11 @@ export const useGame = () => {
       : [...userMoves, move]
 
     if (who === PLAYER.system) {
+      setConsidered(move)
+      setTimeout(() => {
+        setConsidered(false)
+        setSelection(move)
+      }, 100)
       setSystemMoves((prevState: number[]) => [...prevState, move])
     } else {
       setUserMoves((prevState: number[]) => [...prevState, move])
@@ -88,24 +95,29 @@ export const useGame = () => {
         player: who,
         location: id,
       }])
-      setLayout(
-        (prevState: (string | null)[]) => prevState.map(
-          (cell: string | null, index: number) => index === id
-            ? who === PLAYER.user
-              ? 'X' : 'O'
-            : cell
+
+      const wait = who === PLAYER.system ? 200 : 0
+      setTimeout(() => {
+        setSelection(null)
+        setLayout(
+          (prevState: (string | null)[]) => prevState.map(
+            (cell: string | null, index: number) => index === id
+              ? who === PLAYER.user
+                ? 'X' : 'O'
+              : cell
+          )
         )
-      )
 
-      if (gameOver) {
-        if (didWin) {
-          setTimeout(() => endGame(who), 1500)
+        if (gameOver) {
+          if (didWin) {
+            setTimeout(() => endGame(who), 1500)
+          }
+          else endGame()
+  
+          return
         }
-        else endGame()
-
-        return
-      }
-      switchWho()
+        switchWho()
+      }, wait)
     }
   }
 

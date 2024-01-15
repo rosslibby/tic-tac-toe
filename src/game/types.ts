@@ -10,6 +10,8 @@ export interface Move {
 
 export interface Game {
   loading: boolean
+  considered: null | number
+  selection: null | number
   layout: (string | null)[]
   userMoves: number[]
   systemMoves: number[]

@@ -5,8 +5,7 @@ import { gameCtx } from '.'
 import { Overlay } from './overlay'
 import { useGame } from '@/app/hooks'
 import { PLAYER } from './types'
-import User from '@/components/pieces/user'
-import System from '@/components/pieces/system'
+import Cell from './cell'
 
 export const GameBoard = () => {
   const { layout, loading, over, running, who } = useContext(gameCtx)
@@ -19,9 +18,7 @@ export const GameBoard = () => {
         <Overlay />
       )}
       {layout.map((cell: (string | null), index: number) => (
-        <div key={index} className={styles.cell} onClick={() => who === PLAYER.user ? move(index) : null}>{
-          cell === 'X' ? <User /> : cell === 'O' ? <System /> : null
-        }</div>
+        <Cell cell={cell} index={index} key={index} move={move} />
       ))}
     </div>
   )
