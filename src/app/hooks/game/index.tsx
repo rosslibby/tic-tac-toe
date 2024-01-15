@@ -8,7 +8,6 @@ export const useGame = () => {
   const { layout, over, who } = useContext(gameCtx)
   const { smartMove } = useAI()
   const move = useMove()
-  const restart = useRestart()
 
   useEffect(() => {
     if (who === PLAYER.system && !over) {
@@ -16,8 +15,5 @@ export const useGame = () => {
     }
   }, [layout, who])
 
-  return {
-    move,
-    restart,
-  }
+  return { move }
 }

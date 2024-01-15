@@ -229,5 +229,40 @@
 
 .main h1 {
   font-weight: 200;
+  margin: 0;
+}
+
+.title {
+  align-items: center;
+  display: grid;
+  gap: 0.75rem;
+  grid-auto-flow: column;
   margin-bottom: 6rem;
+}
+
+.restartGame {
+  background-color: transparent;
+  border: 1px solid #8be9fd;
+  border-radius: 3px;
+  box-shadow: 0.25rem 0.25rem 0 0 #8be9fd;
+  color: #8be9fd;
+  cursor: pointer;
+  font-family: system-ui;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: .375rem 1rem;
+  text-transform: uppercase;
+  transition: all .25s ease;
+}
+
+.restartGame:hover,
+.restartGame:active {
+  border-color: #ff79c6;
+  box-shadow: 0.25rem 0.25rem 0 0 #ff79c6;
+  color: #ff79c6;
+}
+
+.restartGame:active {
+  box-shadow: 0.125rem 0.125rem 0 0 #ff79c6;
+  transform: scale(.99) translate(8px, 0);
 }

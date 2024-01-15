@@ -16,9 +16,6 @@ export const GameBoard = () => {
 
   return (
     <div className={classname}>
-      {over && (
-        <Overlay />
-      )}
       {layout.map((cell: (string | null), index: number) => (
         <Cell cell={cell} index={index} key={index} move={move} />
       ))}
