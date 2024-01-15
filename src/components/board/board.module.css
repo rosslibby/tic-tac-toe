@@ -1,15 +1,35 @@
 .board {
+  aspect-ratio: 1;
   background-color: transparent;
   border-radius: .375rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  height: 30rem;
+  max-width: 36rem;
   overflow: hidden;
   position: relative;
-  width: 30rem;
+  width: 60%;
 
   --border-color: #ff79c6;
+}
+
+@media screen and (max-width: 64rem) {
+  .board {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 48.75rem) {
+  .board {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 32rem) {
+  .board {
+    height: 80vw;
+    width: 80vw;
+  }
 }
 
 .cell {
