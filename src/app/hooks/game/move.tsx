@@ -10,48 +10,68 @@ export function useMove() {
   const endGame = useEndGame()
   const switchPlayer = useSwitchPlayer()
 
-  return (id: number) => {
-    if (over) return
+  const startOrStop = () => {
     if (!allMoves.length) {
       _.setRunning(true)
     } else if (allMoves.length === layout.length) {
       _.setRunning(false)
       _.setOver(true)
     }
-    if (layout[id] !== null) {
-      _.setMessage('Please select an empty space')
-    } else {
-      const moves = updateMoves(id)
-      const didWin = checkForWin(moves)
-      const gameOver = didWin || allMoves.length === layout.length - 1
+  }
 
-      _.setMoves((prevState: Move[]) => [...prevState, {
-        player: who,
-        location: id,
-      }])
+  const handleGameOver = (moves: number[]): boolean => {
+    const didWin = checkForWin(moves)
+    const gameOver = didWin || allMoves.length === layout.length - 1
 
-      const wait = who === PLAYER.system ? 425 : 0
-      setTimeout(() => {
-        _.setSelection(null)
-        _.setLayout(
-          (prevState: (string | null)[]) => prevState.map(
-            (cell: string | null, index: number) => index === id
-              ? who === PLAYER.user
-                ? 'X' : 'O'
-              : cell
-          )
-        )
+    if (gameOver) {
+      console.log('DId win?', didWin, who)
+      if (didWin) {
+        setTimeout(() => endGame(who), 1500)
+      }
+      else endGame()
 
-        if (gameOver) {
-          if (didWin) {
-            setTimeout(() => endGame(who), 1500)
-          }
-          else endGame()
+      return true
+    }
 
-          return
-        }
-        switchPlayer()
-      }, wait)
+    return false
+  }
+
+  const updateLayout = (moves: number[], move: number) => {
+    _.setSelection(null)
+    _.setLayout(
+      (prevState: (string | null)[]) => prevState.map(
+        (cell: string | null, index: number) => index === move
+          ? who === PLAYER.user
+            ? 'X' : 'O'
+          : cell
+      )
+    )
+
+    const gameOver = handleGameOver(moves)
+
+    if (gameOver) return
+
+    switchPlayer()
+  }
+
+  return (move: number) => {
+    if (!over) {
+      startOrStop()
+
+      if (layout[move] !== null) {
+        _.setMessage('Please select an empty space')
+      } else {
+        const moves = updateMoves(move)
+
+        _.setMoves((prevState: Move[]) => [...prevState, {
+          player: who,
+          location: move,
+        }])
+
+        const wait = who === PLAYER.system ? 425 : 0
+
+        setTimeout(() => updateLayout(moves, move), wait)
+      }
     }
   }
 }

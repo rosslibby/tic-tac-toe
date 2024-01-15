@@ -5,7 +5,7 @@ import { useContext } from 'react'
 export function useUpdateMoves() {
   const { systemMoves, userMoves, who, _ } = useContext(gameCtx)
 
-  return (move: number) => {
+  return (move: number): number[] => {
     const moves = who === PLAYER.system
         ? [...systemMoves, move]
         : [...userMoves, move]

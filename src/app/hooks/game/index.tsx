@@ -5,13 +5,13 @@ import { useAI } from '..'
 import { useMove, useRestart } from './lib'
 
 export const useGame = () => {
-  const { layout, who } = useContext(gameCtx)
+  const { layout, over, who } = useContext(gameCtx)
   const { smartMove } = useAI()
   const move = useMove()
   const restart = useRestart()
 
   useEffect(() => {
-    if (who === PLAYER.system) {
+    if (who === PLAYER.system && !over) {
       setTimeout(() => move(smartMove()), 3000)
     }
   }, [layout, who])
