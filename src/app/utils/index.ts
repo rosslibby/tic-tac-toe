@@ -1,5 +1,24 @@
 import { WINNING_COMBOS } from '../constants'
 
+/**
+ * 
+ *  + + + + + + + + + + + + + + + + + + + +
+ *  +                                     +
+ *  +     TENTATIVE LINE DRAWING CODE     +
+ *  +                                     +
+ *  + + + + + + + + + + + + + + + + + + + +
+ * 
+ * const line = document.createElement('div')
+ * line.style.width = '4px'
+ * line.style.height = '4px'
+ * line.style.backgroundColor = 'red'
+ * line.style.position = 'absolute'
+ * document.getElementById('board').appendChild(line)
+ * line.style.top = (temp2.offsetTop + temp2.offsetHeight / 2) - line.offsetHeight / 2 + 'px'
+ * line.style.transition = 'all 2s ease'
+ * line.style.width = Math.abs((temp3.offsetLeft + temp3.offsetWidth / 2) - (temp1.offsetLeft - temp1.offsetWidth / 2)) - line.style.width + 'px'
+ */
+
 export const checkForWin = (moves: number[]): boolean => {
   let result: boolean = false
 
